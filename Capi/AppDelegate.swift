@@ -5,7 +5,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        statusItem.button?.title = isCapsLockOn() ? "Caps lock: On" : "Caps lock: Off"
+        if let button = statusItem.button {
+            button.image = NSImage(named: "capital-a-18")
+            button.title = ""
+            button.setAccessibilityLabel(isCapsLockOn() ? "Caps Lock is On" : "Caps Lock is Off")
+        }
+        
+        let menu = NSMenu()
+        menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        statusItem.menu = menu
 
         NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged) { [weak self] event in
             self?.updateCapsLockState(event: event)
@@ -13,8 +21,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func updateCapsLockState(event: NSEvent) {
-        statusItem.button?.title = event.modifierFlags.contains(.capsLock) ? "Caps lock: On" : "Caps lock: Off"
-        statusItem.button?.image = NSImage(named: "captial-a")
+        if let button = statusItem.button {
+            button.image = event.modifierFlags.contains(.capsLock) ? NSImage(named: "capital-a-18") : NSImage(named: "small-a-18")
+            button.title = ""
+            button.setAccessibilityLabel(event.modifierFlags.contains(.capsLock) ? "Caps Lock is On" : "Caps Lock is Off")
+        }
     }
 
     private func isCapsLockOn() -> Bool {
