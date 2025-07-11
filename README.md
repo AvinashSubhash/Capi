@@ -29,7 +29,7 @@ Capi is a lightweight macOS menu bar app that shows the current Caps Lock status
 
 ### Package Install
 
-- Download the latest zip file from the Package of the repository and unzip it. Then move the .app to /Applications
+- Download the latest zip file from the Release section of the repository and unzip it and move Capi.app to /Applications
 
 ## Usage
 - The menu bar icon changes based on the Caps Lock state.
