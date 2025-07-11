@@ -1,4 +1,10 @@
-# Capi
+<div align="center">
+  <img src="Capi/Assets.xcassets/AppIcon.appiconset/Capi-new-trans-512.png" alt="Capi Logo" width="128" height="128" />
+  
+  # Capi
+  
+  <em>macOS Menu Bar Caps Lock Indicator</em>
+</div>
 
 Capi is a lightweight macOS menu bar app that shows the current Caps Lock status using a custom icon. It is designed to be unobtrusive, accessible, and easy to use.
 
